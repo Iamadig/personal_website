@@ -1,7 +1,17 @@
 :root {
     --text-color: #1a202c;
+    --background-color: #ffffff;
     --link-color: #4a5568;
     --hover-color: #2b6cb0;
+    --border-color: #e2e8f0;
+}
+
+[data-theme="dark"] {
+    --text-color: #e2e8f0;
+    --background-color: #1a202c;
+    --link-color: #90cdf4;
+    --hover-color: #63b3ed;
+    --border-color: #2d3748;
 }
 
 * {
@@ -14,6 +24,8 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background-color: var(--background-color);
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .container {
@@ -26,13 +38,14 @@ body {
 header {
     padding: 1rem 0;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 nav a {
@@ -44,6 +57,27 @@ nav a {
 nav a:hover,
 nav a.active {
     color: var(--hover-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--hover-color);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* Typography */
@@ -82,7 +116,8 @@ a:hover {
 }
 
 .post-date {
-    color: #718096;
+    color: var(--text-color);
+    opacity: 0.7;
     font-size: 0.9rem;
 }
 
@@ -91,7 +126,7 @@ footer {
     margin-top: 4rem;
     padding: 2rem 0;
     text-align: center;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--border-color);
 }
 
 .social-links {
