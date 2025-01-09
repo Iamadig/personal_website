@@ -11,5 +11,3 @@ I believe in the power of simplicity and focused content. Here you'll find:
 - Curated resources, quotes, and memes that I find meaningful
 - My thoughts and articles on various topics
 - A clean, distraction-free reading experience
-
-© {{ "now" | dateFormat }} Your Name
