@@ -1,6 +1,4 @@
 :root {
-    --primary-color: #2d3748;
-    --background-color: #ffffff;
     --text-color: #1a202c;
     --link-color: #4a5568;
     --hover-color: #2b6cb0;
@@ -13,10 +11,9 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
 }
 
 .container {
@@ -27,9 +24,9 @@ body {
 
 /* Header & Navigation */
 header {
-    background-color: var(--primary-color);
     padding: 1rem 0;
     margin-bottom: 2rem;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 nav ul {
@@ -39,25 +36,27 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 nav a:hover,
 nav a.active {
-    color: #63b3ed;
+    color: var(--hover-color);
 }
 
 /* Typography */
 h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 h2 {
     font-size: 1.8rem;
     margin: 2rem 0 1rem;
+    font-weight: 500;
 }
 
 p {
@@ -93,6 +92,20 @@ footer {
     padding: 2rem 0;
     text-align: center;
     border-top: 1px solid #e2e8f0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+}
+
+.social-links a:hover {
+    color: var(--hover-color);
 }
 
 /* Responsive Design */
