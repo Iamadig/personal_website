@@ -1,17 +1,15 @@
 ---
 layout: base.njk
-title: Welcome
-description: Welcome to my personal website where I share my thoughts and experiences.
+title: Hello, I'm [Your Name]
+description: Welcome to my corner of the internet. This is a minimalist space where I share my thoughts, collect interesting resources, and document my journey.
 ---
 
-# Hello, I'm [Your Name]
+Welcome to my corner of the internet. This is a minimalist space where I share my thoughts, collect interesting resources, and document my journey.
 
-I'm a [your profession] based in [your location]. This is my digital garden where I share my thoughts, experiences, and resources that I find interesting.
+I believe in the power of simplicity and focused content. Here you'll find:
 
-## What I Do
+- Curated resources, quotes, and memes that I find meaningful
+- My thoughts and articles on various topics
+- A clean, distraction-free reading experience
 
-I specialize in [your specialties]. When I'm not working, you can find me [your interests/hobbies].
-
-## Get in Touch
-
-Feel free to reach out to me on [social media links or contact information].
+© {{ "now" | dateFormat }} Your Name
