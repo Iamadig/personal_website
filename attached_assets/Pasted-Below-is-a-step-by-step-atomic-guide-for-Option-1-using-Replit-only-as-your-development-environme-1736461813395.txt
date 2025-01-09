@@ -1,0 +1,127 @@
+Below is a step-by-step (atomic) guide for Option 1: using Replit only as your development environment, while GitHub Pages hosts your static site (with a custom domain if desired). These steps are broken down so you can feed them to an AI agent in Replit (or follow them manually).
+
+1. Create or Open Your Repl
+	1.	Go to Replit: Log in at replit.com.
+	2.	Create a new Repl:
+	•	Click “Create Repl.”
+	•	Under “Import from GitHub,” paste your GitHub repository URL (if you already have a repo).
+	•	Or select “Node.js” as a blank template, then proceed.
+
+2. Set Up Eleventy in Replit (If Not Already in Your Repo)
+	1.	Open the Shell (bottom pane in Replit).
+	2.	Initialize npm (if package.json doesn’t exist yet):
+
+npm init -y
+
+
+	3.	Install Eleventy:
+
+npm install @11ty/eleventy --save-dev
+
+
+	4.	Update package.json (add scripts if missing):
+
+{
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
+
+
+	5.	Ensure your Eleventy config (.eleventy.js) and Markdown files (.md) are present.
+	•	Example: index.md, resources.md, etc.
+	•	If you want Eleventy to output files to docs/ for GitHub Pages, add:
+
+// .eleventy.js
+module.exports = function(eleventyConfig) {
+  return {
+    dir: {
+      input: ".",
+      includes: "_includes",
+      output: "docs"
+    }
+  };
+};
+
+3. Develop & Preview Locally on Replit
+	1.	Click “Run” in Replit’s top center.
+	2.	By default, Replit might run npm start (if you set it in the .replit file).
+	3.	If not, open the Shell and type:
+
+npm start
+
+
+	4.	View in Replit browser preview (on the right) or click “Open in new tab.”
+	5.	Make changes to your Markdown or layout files.
+	6.	Refresh the preview to see changes.
+
+4. Commit & Push to GitHub
+
+(If your Repl is already linked to GitHub, skip steps 1–3 below. Otherwise, do these steps to set up Git in your Repl.)
+	1.	Check if Git is initialized:
+
+git status
+
+	•	If you see “not a git repository,” run git init.
+
+	2.	Add remote (replace <your-username> and <repo-name> with your details):
+
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+
+
+	3.	Stage & commit your files:
+
+git add .
+git commit -m "Initial commit from Replit"
+
+
+	4.	Push:
+
+git push origin main
+
+	•	Or git push origin master if your repo uses master as the default branch.
+
+5. GitHub Pages Setup (If Not Done Yet)
+	1.	Open your repository on GitHub.
+	2.	Go to “Settings” → “Pages.”
+	3.	Build and deployment:
+	•	Source: Deploy from a branch.
+	•	Branch: main (or master), Folder: docs.
+	4.	Save. Wait ~1–2 minutes for GitHub to process and deploy.
+
+6. (Optional) Custom Domain
+	1.	In the same “Pages” section on GitHub, find “Custom domain.”
+	2.	Enter your domain (e.g., example.com) and click “Save.”
+	3.	DNS Setup at your domain registrar:
+	•	Typically add A records pointing to GitHub Pages IPs (185.199.108.153, etc.) for @ (root)
+	•	Add a CNAME for www → <username>.github.io.
+	4.	Enforce HTTPS: In Pages settings, check “Enforce HTTPS.”
+
+7. Verify Live Site
+	1.	Wait a few minutes for the GitHub build and, if applicable, DNS propagation.
+	2.	Visit your GitHub Pages URL or your custom domain.
+	3.	Confirm your Eleventy site content matches what you see in Replit’s preview.
+
+8. Update Workflow
+
+Moving forward, your workflow is:
+	1.	Open Replit → make changes in Markdown or layouts.
+	2.	Preview with npm start.
+	3.	When satisfied, commit & push changes to GitHub.
+	4.	GitHub Pages auto-deploys the updated site, so your custom domain (or default GitHub Pages URL) is refreshed.
+
+Summary of Atomic Steps
+	1.	Create Repl (or import from GitHub).
+	2.	Install Eleventy (npm install @11ty/eleventy --save-dev).
+	3.	Configure package.json scripts and .eleventy.js if needed.
+	4.	Develop & Preview (npm start).
+	5.	Commit & Push to GitHub.
+	6.	Enable GitHub Pages (target docs folder).
+	7.	(Optional) Add custom domain in GitHub + DNS settings.
+	8.	Repeat build/deploy cycle whenever you change content.
+
+This setup lets you enjoy Replit’s cloud-based coding environment for your Eleventy site while GitHub Pages provides fast, free, always-on hosting.
