@@ -1,2 +1,2 @@
-# My tiny corner of this humungous www
+# My tiny corner of this humongous www
 
