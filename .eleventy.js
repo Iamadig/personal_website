@@ -14,6 +14,11 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Add limit filter for blog posts
+  eleventyConfig.addFilter("limit", function(array, limit) {
+    return array.slice(0, limit);
+  });
+
   return {
     dir: {
       input: ".",
