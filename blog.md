@@ -1,10 +1,9 @@
 ---
 layout: base.njk
-title: Blog
+title: My thoughts
 description: My thoughts and writings on various topics.
 ---
 
-# Latest Posts
 
 <ul class="post-list">
 {%- for post in collections.post | reverse -%}

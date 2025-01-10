@@ -1,13 +1,15 @@
 ---
 layout: base.njk
-title: Hello, I'm [Your Name]
+title: Hello, I'm Adi. 
 description: Welcome to my corner of the internet. This is a minimalist space where I share my thoughts, collect interesting resources, and document my journey.
 ---
 
-Welcome to my corner of the internet. This is a minimalist space where I share my thoughts, collect interesting resources, and document my journey.
+Welcome to my corner of the internet. I want to use this space to share my thoughts and other interesting content.
 
-I believe in the power of simplicity and focused content. Here you'll find:
+I enjoy building companies. 
 
-- Curated resources, quotes, and memes that I find meaningful
-- My thoughts and articles on various topics
-- A clean, distraction-free reading experience
+I am a curious person and I find pleasure in figuring out patterns in chaos. My curiosity takes me to explore different industries and roles. 
+
+"I have no special talent. I am only passionately curious." - Albert Einstein
+
+In the past, I've led launch of DiDi in ANZ, scaled it to be the second largest rideshare company in the region. I have led commercial integration for one of the biggest CPG M&A deals in the world & founded one of the leading AI companies in data analytics for Greenfield exploration in mining. 

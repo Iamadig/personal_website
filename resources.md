@@ -3,8 +3,9 @@ layout: base.njk
 title: Resources
 description: A collection of useful resources, quotes, and memes that I've gathered over time.
 ---
+WIP
 
-## Favorite Quotes
+<!-- ## Favorite Quotes
 
 > "The best time to plant a tree was 20 years ago. The second best time is now."
 > - Chinese Proverb
@@ -37,4 +38,4 @@ description: A collection of useful resources, quotes, and memes that I've gathe
 - [Postman](https://www.postman.com/)
 
 ## Favorite Memes
-(Add your favorite tech/programming memes here)
+(Add your favorite tech/programming memes here) -->
