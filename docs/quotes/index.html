@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building a Personal Website with Eleventy</title>
-    <meta name="description" content="My journey of creating a minimalist personal website using Eleventy, focusing on clean design and efficient content delivery.">
+    <title>Quotes</title>
+    <meta name="description" content="A collection of meaningful quotes that resonate with me.">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 </head>
@@ -14,7 +14,7 @@
         <ul>
             <li><a href="/" >Home</a></li>
             <li><a href="/resources/" >Resources</a></li>
-            <li><a href="/quotes/" >Quotes</a></li>
+            <li><a href="/quotes/" class="active">Quotes</a></li>
             <li>
                 <button class="theme-toggle" aria-label="Toggle dark mode">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
@@ -38,24 +38,41 @@
 </header>
 
     <main class="container">
-        <h1>Building a Personal Website with Eleventy</h1>
-        <p>When I decided to create my personal website, I wanted something simple yet elegant - a platform that would let my content shine without unnecessary distractions. This led me to choose Eleventy (11ty) as my static site generator.</p>
-<h2>Why Eleventy?</h2>
-<ol>
-<li><strong>Simplicity</strong>: Eleventy's straightforward approach to static site generation aligns perfectly with my minimalist philosophy.</li>
-<li><strong>Performance</strong>: By generating static HTML, the site loads incredibly fast and requires minimal server resources.</li>
-<li><strong>Flexibility</strong>: The ability to use multiple template languages and customize the build process gives me complete control.</li>
-</ol>
-<h2>Design Decisions</h2>
-<p>The design focuses on readability and clean typography. Some key features include:</p>
-<ul>
-<li>Dark mode support for comfortable reading in any lighting</li>
-<li>Responsive layout that works well on all devices</li>
-<li>Subtle animations for interactive elements</li>
-<li>Clear typography with proper spacing</li>
-</ul>
-<h2>Looking Forward</h2>
-<p>This website will serve as my digital garden - a place where I can share my thoughts, experiences, and learnings. Stay tuned for more content!</p>
+        <h1>Quotes</h1>
+        <div class="quotes-list">
+  <blockquote class="quote">
+    <p>"A healthy man wants a thousand things, a sick man only wants one."</p>
+    <cite>- Confucius</cite>
+  </blockquote>
+</div>
+<style>
+.quotes-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quote {
+  margin: 2rem 0;
+  padding: 2rem;
+  border-left: 4px solid var(--text-color);
+  background-color: var(--background-color);
+  border-radius: 4px;
+}
+
+.quote p {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.quote cite {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+</style>
 
     </main>
 
