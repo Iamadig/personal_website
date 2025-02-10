@@ -45,9 +45,9 @@ Vision 2030, Crown Prince Mohammed bin Salman's flagship strategy to pivot Saudi
 
 The plan targets **13 sectors** for transformation, from fintech and renewable energy to tourism and logistics. These sectors are a gateway into government grants, venture capital, and partnerships with entities like the Public Investment Fund (PIF) which holds $700B in assets and drives investment in Giga projects like Neom and the Red Sea project.
 
-Saudi fintech Tabby became the MENA region's first fintech unicorn by aligning with Vision 2030's push for cashless economies. Its $2 billion valuation was fuelled by partnerships with Saudi banks and a customer base primed by government digitalization campaigns.
+Saudi fintech **Tabby** became the **MENA region's first fintech unicorn** by aligning with Vision 2030's push for cashless economies. Its $2 billion valuation was fuelled by partnerships with Saudi banks and a customer base primed by government digitalization campaigns.
 
-Saudi e-commerce enabler Salla exemplifies how startups align with Vision 2030's digital economy goals. Salla provides SMEs with a SaaS platform to launch online stores, directly supporting the Kingdom's target to grow its e-commerce market—valued at $20 billion in 2024—by 25% annually. The $130 million pre-IPO funding in 2024, led by Investcorp and Sanabil (a PIF subsidiary), to scale operations ahead of a planned public listing. By simplifying digital commerce, Salla supports the Kingdom's ambition to position e-commerce as a cornerstone of its $49.5 billion retail market by 2030
+Saudi e-commerce enabler **Salla** exemplifies how startups align with Vision 2030's digital economy goals. Salla provides SMEs with a SaaS platform to launch online stores, directly supporting the Kingdom's target to grow its e-commerce market—valued at $20 billion in 2024—by 25% annually. The $130 million pre-IPO funding in 2024, led by Investcorp and Sanabil (a PIF subsidiary), to scale operations ahead of a planned public listing. By simplifying digital commerce, Salla supports the Kingdom's ambition to position e-commerce as a cornerstone of its $49.5 billion retail market by 2030
 
 ### The Alignment Trap
 
