@@ -9,6 +9,11 @@ description: A collection of meaningful quotes that resonate with me.
     <p>"A healthy man wants a thousand things, a sick man only wants one."</p>
     <cite>- Confucius</cite>
   </blockquote>
+
+  <blockquote class="quote">
+    <p>"We judge ourselves by our intentions and others by their actions."</p>
+    <cite>- Stephen M.R. Covey</cite>
+  </blockquote>
 </div>
 
 <style>
