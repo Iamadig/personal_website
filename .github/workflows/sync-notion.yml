@@ -1,0 +1,50 @@
+name: Sync Notion Content
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC (adjust as needed)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+  push:
+    branches: [ main ]
+    paths: [ 'scripts/sync-notion.js' ]
+
+jobs:
+  sync-notion:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Sync Notion content
+      env:
+        NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
+        NOTION_PAGE_URL: ${{ secrets.NOTION_PAGE_URL }}
+      run: node scripts/sync-notion.js
+      
+    - name: Check for changes
+      id: changes
+      run: |
+        git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+        
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Auto-sync content from Notion [skip ci]"
+        git push
