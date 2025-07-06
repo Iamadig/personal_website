@@ -116,7 +116,8 @@ async function blocksToMarkdown(pageId) {
     try {
         const mdblocks = await n2m.pageToMarkdown(pageId);
         const mdString = n2m.toMarkdownString(mdblocks);
-        return mdString;
+        // toMarkdownString returns an object with a 'parent' property containing the markdown
+        return mdString.parent || mdString || "";
     } catch (error) {
         console.error("Error converting blocks to markdown:", error);
         return "";

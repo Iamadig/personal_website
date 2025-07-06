@@ -114,6 +114,8 @@ Changelog:
     - Nested content and block relationships
     - Toggle sections, todo lists, and dividers
     - Mentions, links, and embedded content
+  - Fixed "[object Object]" issue in blog posts by correcting notion-to-md library usage
+  - Blog posts now display proper content instead of object references
 ```
 
 ## User Preferences
