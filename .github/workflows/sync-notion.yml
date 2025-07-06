@@ -52,13 +52,14 @@ jobs:
       run: |
         git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
         
-    - name: Commit content changes
+    - name: Commit and push content changes
       if: steps.changes.outputs.changed == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Auto-sync content from Notion"
+        git push
         
     - name: Build site
       run: npx @11ty/eleventy
@@ -71,7 +72,3 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-      
-    - name: Push content changes to repository
-      if: steps.changes.outputs.changed == 'true'
-      run: git push
