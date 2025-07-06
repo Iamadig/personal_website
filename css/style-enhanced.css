@@ -114,11 +114,8 @@ p {
 header {
     padding: var(--space-xxl) 0 var(--space-xl);
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: var(--space-xxl);
     background-color: var(--background-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-subtle);
 }
@@ -184,7 +181,7 @@ nav a.active {
 main {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 var(--space-lg) var(--space-xxxl);
+    padding: var(--space-xxl) var(--space-lg) var(--space-xxxl);
     line-height: 1.7;
 }
 
