@@ -113,11 +113,8 @@ p {
 /* Header with Refined Spacing */
 header {
     padding: var(--space-xxl) 0 var(--space-xl);
-    border-bottom: 1px solid var(--border-color);
     background-color: var(--background-color);
     position: relative;
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-subtle);
 }
 
 /* Navigation Enhancement */
@@ -390,7 +387,6 @@ footer {
     text-align: center;
     font-size: 0.85rem;
     color: var(--text-tertiary);
-    border-top: 1px solid var(--border-color);
 }
 
 .social-links {
