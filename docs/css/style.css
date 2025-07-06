@@ -263,10 +263,14 @@ a:hover {
     text-decoration: none;
     color: inherit;
     transition: all 0.2s ease;
+    padding: 0.75rem;
+    margin: -0.75rem;
+    border-radius: 6px;
 }
 
 .thought-link:hover {
-    opacity: 0.8;
+    background-color: var(--border-color);
+    opacity: 0.95;
 }
 
 .thought-header {
