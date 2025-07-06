@@ -118,6 +118,18 @@ async function blocksToMarkdown(blockId) {
 
         for (const block of blocks.results) {
             markdown += await blockToMarkdown(block);
+            
+            // Handle nested children for blocks that can have them
+            if (block.has_children && ['callout', 'toggle', 'bulleted_list_item', 'numbered_list_item'].includes(block.type)) {
+                const childrenMarkdown = await blocksToMarkdown(block.id);
+                if (childrenMarkdown) {
+                    if (block.type === 'toggle') {
+                        markdown += childrenMarkdown + "\n</details>\n\n";
+                    } else {
+                        markdown += childrenMarkdown;
+                    }
+                }
+            }
         }
 
         return markdown;
@@ -158,7 +170,33 @@ async function blockToMarkdown(block) {
             const code = richTextToMarkdown(block.code.rich_text);
             return "```" + language + "\n" + code + "\n```\n\n";
         
+        case "callout":
+            const calloutText = richTextToMarkdown(block.callout.rich_text);
+            const emoji = block.callout.icon?.emoji || "💡";
+            return `> ${emoji} **${calloutText}**\n\n`;
+        
+        case "image":
+            const imageUrl = block.image.external?.url || block.image.file?.url;
+            const caption = block.image.caption ? richTextToMarkdown(block.image.caption) : "";
+            if (imageUrl) {
+                return `![${caption}](${imageUrl})\n\n`;
+            }
+            return "";
+        
+        case "divider":
+            return "---\n\n";
+        
+        case "toggle":
+            const toggleTitle = richTextToMarkdown(block.toggle.rich_text);
+            return `<details>\n<summary>${toggleTitle}</summary>\n\n`;
+        
+        case "to_do":
+            const checked = block.to_do.checked ? "x" : " ";
+            const todoText = richTextToMarkdown(block.to_do.rich_text);
+            return `- [${checked}] ${todoText}\n`;
+        
         default:
+            console.log(`Unsupported block type: ${block.type}`);
             return "";
     }
 }
@@ -176,6 +214,14 @@ function richTextToMarkdown(richText) {
         
         if (text.annotations.italic) {
             result = "*" + result + "*";
+        }
+        
+        if (text.annotations.strikethrough) {
+            result = "~~" + result + "~~";
+        }
+        
+        if (text.annotations.underline) {
+            result = "<u>" + result + "</u>";
         }
         
         if (text.annotations.code) {

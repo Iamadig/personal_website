@@ -103,6 +103,14 @@ Changelog:
   - Added thoughts collection to Eleventy config for proper blog post listing
   - Removed duplicate static content files to make Notion the single source of truth
   - Enhanced GitHub Actions with clean builds and cache-busting for reliable deployments
+  - Fixed unpublished thoughts issue - now properly removes unpublished content from website
+  - Enhanced Notion-to-markdown conversion with support for rich formatting:
+    - Callouts with emojis and styling
+    - Images with captions (both uploaded and external)
+    - Strikethrough and underline text formatting
+    - Toggle/collapsible sections
+    - Todo lists with checkboxes
+    - Dividers and nested content blocks
 ```
 
 ## User Preferences
