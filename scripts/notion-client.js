@@ -204,7 +204,7 @@ function createSlug(title) {
 
 module.exports = {
     notion,
-    NOTION_PAGE_ID,
+    getNotionPageId,
     getNotionDatabases,
     findDatabaseByTitle,
     queryDatabase,
