@@ -98,6 +98,11 @@ Changelog:
   - Merged GitHub Actions workflows for streamlined deployment
   - Single workflow now handles Notion sync + deployment in one process
   - Optimized for seamless content updates from Notion to live website
+  - Fixed critical Notion sync bug preventing module loading
+  - Updated quotes and thoughts pages to use dynamic Notion data instead of hardcoded content
+  - Added thoughts collection to Eleventy config for proper blog post listing
+  - Removed duplicate static content files to make Notion the single source of truth
+  - Enhanced GitHub Actions with clean builds and cache-busting for reliable deployments
 ```
 
 ## User Preferences
