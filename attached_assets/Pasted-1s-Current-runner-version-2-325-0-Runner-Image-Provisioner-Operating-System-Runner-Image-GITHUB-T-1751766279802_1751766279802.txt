@@ -1,0 +1,138 @@
+1s
+Current runner version: '2.325.0'
+Runner Image Provisioner
+Operating System
+Runner Image
+GITHUB_TOKEN Permissions
+Secret source: Actions
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+Download immutable action package 'actions/checkout@v4'
+Download immutable action package 'actions/setup-node@v4'
+Download immutable action package 'actions/configure-pages@v3'
+Download immutable action package 'actions/upload-pages-artifact@v3'
+Download immutable action package 'actions/deploy-pages@v4'
+Getting action download info
+Download immutable action package 'actions/upload-artifact@v4'
+Complete job name: sync-and-deploy
+2s
+Run actions/checkout@v4
+Syncing repository: Iamadig/personal_website
+Getting Git version info
+Temporarily overriding HOME='/home/runner/work/_temp/4d5add7a-aec2-4863-a128-c8bf483615e5' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+/usr/bin/git config --global --add safe.directory /home/runner/work/personal_website/personal_website
+Deleting the contents of '/home/runner/work/personal_website/personal_website'
+Initializing the repository
+Disabling automatic garbage collection
+Setting up auth
+Fetching the repository
+Determining the checkout info
+/usr/bin/git sparse-checkout disable
+/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Checking out the ref
+/usr/bin/git log -1 --format=%H
+5e60a6b5194b4cccc5b593560083af35c118c8a1
+3s
+Run actions/setup-node@v4
+Found in cache @ /opt/hostedtoolcache/node/20.19.2/x64
+Environment details
+/opt/hostedtoolcache/node/20.19.2/x64/bin/npm config get cache
+/home/runner/.npm
+Cache hit for: node-cache-Linux-x64-npm-0aaa5288071f5d00fe39766eb92c931499623153a1263d1b9d06a22b2d662c0a
+Received 5174721 of 5174721 (100.0%), 39.8 MBs/sec
+Cache Size: ~5 MB (5174721 B)
+/usr/bin/tar -xf /home/runner/work/_temp/5035e41e-4a71-4a1d-aef1-12c18e7e998f/cache.tzst -P -C /home/runner/work/personal_website/personal_website --use-compress-program unzstd
+Cache restored successfully
+Cache restored from key: node-cache-Linux-x64-npm-0aaa5288071f5d00fe39766eb92c931499623153a1263d1b9d06a22b2d662c0a
+0s
+Run actions/configure-pages@v3
+3s
+4s
+Run node scripts/sync-notion.js
+Starting Notion sync...
+
+✅ Environment variables are set
+✅ Starting content sync...
+
+Syncing thoughts from Notion...
+Found 2 published thoughts
+Created/updated: testing.md
+Created/updated: why-global-founders-cannot-afford-to-ignore-saudi-arabia.md
+Thoughts sync complete!
+
+Syncing quotes from Notion...
+Found 3 published quotes
+Updated quotes data file with 3 quotes
+Quotes sync complete!
+
+✅ Notion sync completed successfully!
+1s
+Run git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+0s
+1s
+Run npx @11ty/eleventy
+[11ty] Writing ./docs/README/index.html from ./README.md (njk)
+[11ty] Writing ./docs/deployment-summary/index.html from ./deployment-summary.md (njk)
+[11ty] Writing ./docs/replit/index.html from ./replit.md (njk)
+[11ty] Writing ./docs/scripts/README/index.html from ./scripts/README.md (njk)
+[11ty] Writing ./docs/index.html from ./index.md (njk)
+[11ty] Writing ./docs/quotes/index.html from ./quotes.md (njk)
+[11ty] Writing ./docs/resources/index.html from ./resources.md (njk)
+[11ty] Writing ./docs/thoughts/index.html from ./thoughts.md (njk)
+[11ty] Writing ./docs/thoughts/ksa-thoughts/index.html from ./thoughts/ksa-thoughts.md (njk)
+[11ty] Writing ./docs/thoughts/test/index.html from ./thoughts/test.md (njk)
+[11ty] Writing ./docs/thoughts/why-global-founders-cannot-afford-to-ignore-saudi-arabia/index.html from ./thoughts/why-global-founders-cannot-afford-to-ignore-saudi-arabia.md (njk)
+[11ty] Writing ./docs/thoughts/testing/index.html from ./thoughts/testing.md (njk)
+[11ty] Benchmark    281ms  62%    14× (Configuration) "dateFormat" Nunjucks Filter
+[11ty] Copied 1 Wrote 12 files in 0.46 seconds (v3.0.0)
+0s
+Run actions/upload-pages-artifact@v3
+Run echo ::group::Archive artifact
+Archive artifact
+Run actions/upload-artifact@v4
+With the provided path, there will be 1 file uploaded
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 13896
+Finished uploading artifact content to blob storage!
+SHA256 digest of uploaded artifact zip is 27880b3c33c32610e38aa442cef25145b7c4415b737a7b51c7404346c3f24de2
+Finalizing artifact upload
+Artifact github-pages.zip successfully finalized. Artifact ID 3470941658
+Artifact github-pages has been successfully uploaded! Final size is 13896 bytes. Artifact ID is 3470941658
+Artifact download URL: https://github.com/Iamadig/personal_website/actions/runs/16094030069/artifacts/3470941658
+6s
+Run actions/deploy-pages@v4
+Fetching artifact metadata for "github-pages" in this workflow run
+Found 1 artifact(s)
+Creating Pages deployment with payload:
+{
+	"artifact_id": 3470941658,
+	"pages_build_version": "5e60a6b5194b4cccc5b593560083af35c118c8a1",
+	"oidc_token": "***"
+}
+Created deployment for 5e60a6b5194b4cccc5b593560083af35c118c8a1, ID: 5e60a6b5194b4cccc5b593560083af35c118c8a1
+Getting Pages deployment status...
+Reported success!
+0s
+Post job cleanup.
+Cache hit occurred on the primary key node-cache-Linux-x64-npm-0aaa5288071f5d00fe39766eb92c931499623153a1263d1b9d06a22b2d662c0a, not saving cache.
+0s
+Post job cleanup.
+/usr/bin/git version
+git version 2.49.0
+Temporarily overriding HOME='/home/runner/work/_temp/3c67a3c0-98a3-4d7c-baa9-cf2ac4064279' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+/usr/bin/git config --global --add safe.directory /home/runner/work/personal_website/personal_website
+/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://github.com/.extraheader
+/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+0s
+Evaluate and set environment url
+Evaluated environment url: https://adi.im/
+Cleaning up orphan processes
