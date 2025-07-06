@@ -1,9 +1,13 @@
 const { Client } = require("@notionhq/client");
+const { NotionToMarkdown } = require("notion-to-md");
 
 // Initialize Notion client
 const notion = new Client({
     auth: process.env.NOTION_INTEGRATION_SECRET,
 });
+
+// Initialize NotionToMarkdown converter
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
 // Extract the page ID from the Notion page URL
 function extractPageIdFromUrl(pageUrl) {
@@ -106,135 +110,20 @@ async function queryDatabase(databaseId) {
 }
 
 /**
- * Convert Notion blocks to markdown
+ * Convert Notion blocks to markdown using the notion-to-md library
  */
-async function blocksToMarkdown(blockId) {
+async function blocksToMarkdown(pageId) {
     try {
-        const blocks = await notion.blocks.children.list({
-            block_id: blockId,
-        });
-
-        let markdown = "";
-
-        for (const block of blocks.results) {
-            markdown += await blockToMarkdown(block);
-            
-            // Handle nested children for blocks that can have them
-            if (block.has_children && ['callout', 'toggle', 'bulleted_list_item', 'numbered_list_item'].includes(block.type)) {
-                const childrenMarkdown = await blocksToMarkdown(block.id);
-                if (childrenMarkdown) {
-                    if (block.type === 'toggle') {
-                        markdown += childrenMarkdown + "\n</details>\n\n";
-                    } else {
-                        markdown += childrenMarkdown;
-                    }
-                }
-            }
-        }
-
-        return markdown;
+        const mdblocks = await n2m.pageToMarkdown(pageId);
+        const mdString = n2m.toMarkdownString(mdblocks);
+        return mdString;
     } catch (error) {
         console.error("Error converting blocks to markdown:", error);
         return "";
     }
 }
 
-/**
- * Convert a single Notion block to markdown
- */
-async function blockToMarkdown(block) {
-    switch (block.type) {
-        case "paragraph":
-            return richTextToMarkdown(block.paragraph.rich_text) + "\n\n";
-        
-        case "heading_1":
-            return "# " + richTextToMarkdown(block.heading_1.rich_text) + "\n\n";
-        
-        case "heading_2":
-            return "## " + richTextToMarkdown(block.heading_2.rich_text) + "\n\n";
-        
-        case "heading_3":
-            return "### " + richTextToMarkdown(block.heading_3.rich_text) + "\n\n";
-        
-        case "bulleted_list_item":
-            return "- " + richTextToMarkdown(block.bulleted_list_item.rich_text) + "\n";
-        
-        case "numbered_list_item":
-            return "1. " + richTextToMarkdown(block.numbered_list_item.rich_text) + "\n";
-        
-        case "quote":
-            return "> " + richTextToMarkdown(block.quote.rich_text) + "\n\n";
-        
-        case "code":
-            const language = block.code.language || "";
-            const code = richTextToMarkdown(block.code.rich_text);
-            return "```" + language + "\n" + code + "\n```\n\n";
-        
-        case "callout":
-            const calloutText = richTextToMarkdown(block.callout.rich_text);
-            const emoji = block.callout.icon?.emoji || "💡";
-            return `> ${emoji} **${calloutText}**\n\n`;
-        
-        case "image":
-            const imageUrl = block.image.external?.url || block.image.file?.url;
-            const caption = block.image.caption ? richTextToMarkdown(block.image.caption) : "";
-            if (imageUrl) {
-                return `![${caption}](${imageUrl})\n\n`;
-            }
-            return "";
-        
-        case "divider":
-            return "---\n\n";
-        
-        case "toggle":
-            const toggleTitle = richTextToMarkdown(block.toggle.rich_text);
-            return `<details>\n<summary>${toggleTitle}</summary>\n\n`;
-        
-        case "to_do":
-            const checked = block.to_do.checked ? "x" : " ";
-            const todoText = richTextToMarkdown(block.to_do.rich_text);
-            return `- [${checked}] ${todoText}\n`;
-        
-        default:
-            console.log(`Unsupported block type: ${block.type}`);
-            return "";
-    }
-}
-
-/**
- * Convert Notion rich text to markdown
- */
-function richTextToMarkdown(richText) {
-    return richText.map(text => {
-        let result = text.plain_text;
-        
-        if (text.annotations.bold) {
-            result = "**" + result + "**";
-        }
-        
-        if (text.annotations.italic) {
-            result = "*" + result + "*";
-        }
-        
-        if (text.annotations.strikethrough) {
-            result = "~~" + result + "~~";
-        }
-        
-        if (text.annotations.underline) {
-            result = "<u>" + result + "</u>";
-        }
-        
-        if (text.annotations.code) {
-            result = "`" + result + "`";
-        }
-        
-        if (text.href) {
-            result = "[" + result + "](" + text.href + ")";
-        }
-        
-        return result;
-    }).join("");
-}
+// Custom conversion functions removed - now using notion-to-md library
 
 /**
  * Create a URL-friendly slug from a title

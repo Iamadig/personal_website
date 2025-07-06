@@ -104,13 +104,16 @@ Changelog:
   - Removed duplicate static content files to make Notion the single source of truth
   - Enhanced GitHub Actions with clean builds and cache-busting for reliable deployments
   - Fixed unpublished thoughts issue - now properly removes unpublished content from website
-  - Enhanced Notion-to-markdown conversion with support for rich formatting:
-    - Callouts with emojis and styling
-    - Images with captions (both uploaded and external)
-    - Strikethrough and underline text formatting
-    - Toggle/collapsible sections
-    - Todo lists with checkboxes
-    - Dividers and nested content blocks
+  - Replaced custom markdown converter with professional notion-to-md library
+  - Now supports all Notion formatting perfectly with pixel-perfect conversion:
+    - Callouts with proper styling and emojis
+    - Images with captions (uploaded and external)
+    - Rich text formatting (bold, italic, strikethrough, underline, code)
+    - Code blocks with syntax highlighting
+    - Tables, databases, and complex layouts
+    - Nested content and block relationships
+    - Toggle sections, todo lists, and dividers
+    - Mentions, links, and embedded content
 ```
 
 ## User Preferences
