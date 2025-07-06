@@ -1,12 +1,11 @@
 name: Manual Deploy (Code Changes Only)
 
 on:
-  # Temporarily disabled to avoid conflicts with main workflow
-  # push:
-  #   branches: [ main ]
-  #   paths-ignore: 
-  #     - 'thoughts/**'
-  #     - '_data/quotes.json'
+  push:
+    branches: [ main ]
+    paths-ignore: 
+      - 'thoughts/**'
+      - '_data/quotes.json'
   workflow_dispatch:
 
 permissions:
