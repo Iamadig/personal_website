@@ -62,6 +62,13 @@ async function syncThoughts() {
             fs.mkdirSync(thoughtsDir, { recursive: true });
         }
 
+        // Clean up existing thoughts files (remove unpublished ones)
+        const existingFiles = fs.readdirSync(thoughtsDir).filter(file => file.endsWith('.md'));
+        for (const file of existingFiles) {
+            fs.unlinkSync(path.join(thoughtsDir, file));
+        }
+        console.log(`Cleaned up ${existingFiles.length} existing thought files`);
+
         for (const thought of thoughts) {
             const properties = thought.properties;
             
