@@ -1,0 +1,33 @@
+{# Reusable list item component for thoughts and quotes #}
+{% macro listItem(type, item, url = null) %}
+<article class="{{ type }}-item">
+    {% if url %}
+    <a href="{{ url }}" class="{{ type }}-link">
+    {% endif %}
+    
+    {% if type === "thought" %}
+        <div class="thought-header">
+            <h2 class="thought-title">{{ item.title }}</h2>
+            <time datetime="{{ item.date | dateFormat('YYYY-MM-DD') }}" class="thought-date">{{ item.date | dateFormat('M/D/YYYY') }}</time>
+        </div>
+        <p class="thought-description">{{ item.description or (item.content | striptags | truncate(100)) }}</p>
+    {% elif type === "quote" %}
+        <div class="quote-content">
+            <div class="quote-header">
+                <p class="quote-text">"{{ item.quote }}"</p>
+                {% if item.date %}
+                <time datetime="{{ item.date }}" class="quote-date">{{ item.date | dateFormat('M/D/YYYY') }}</time>
+                {% endif %}
+            </div>
+            <cite class="quote-author">{{ item.author }}</cite>
+            {% if item.source %}
+            <span class="quote-source">{{ item.source }}</span>
+            {% endif %}
+        </div>
+    {% endif %}
+    
+    {% if url %}
+    </a>
+    {% endif %}
+</article>
+{% endmacro %}
