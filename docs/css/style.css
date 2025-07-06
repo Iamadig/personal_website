@@ -250,12 +250,6 @@ a:hover {
 
 .thought-item {
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.thought-item:last-child {
-    border-bottom: none;
 }
 
 .thought-link {
