@@ -5,15 +5,12 @@ description: A collection of meaningful quotes that resonate with me.
 ---
 
 <div class="quotes-list">
+  {%- for quote in quotes -%}
   <blockquote class="quote">
-    <p>"A healthy man wants a thousand things, a sick man only wants one."</p>
-    <cite>- Confucius</cite>
+    <p>"{{ quote.quote }}"</p>
+    <cite>- {{ quote.author }}</cite>
   </blockquote>
-
-  <blockquote class="quote">
-    <p>"We judge ourselves by our intentions and others by their actions."</p>
-    <cite>- Stephen M.R. Covey</cite>
-  </blockquote>
+  {%- endfor -%}
 </div>
 
 <style>

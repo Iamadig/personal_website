@@ -5,9 +5,11 @@ description: Essays and reflections on technology, entrepreneurship, and persona
 ---
 
 <div class="blog-list">
+    {%- for post in collections.thoughts | reverse -%}
     <article>
-        <h2><a href="/thoughts/ksa-thoughts/">Why global founders cannot afford to ignore Saudi Arabia</a></h2>
-        <time datetime="2025-02-10" class="post-date">February 10, 2025</time>
-        <p class="post-description">Key insights from 7 weeks on the ground in Saudi Arabia's startup ecosystem, exploring funding dynamics, Vision 2030 alignment, and cultural nuances.</p>
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <time datetime="{{ post.data.date | dateFormat('YYYY-MM-DD') }}" class="post-date">{{ post.data.date | dateFormat('MMMM DD, YYYY') }}</time>
+        <p class="post-description">{{ post.data.description or (post.content | truncate(150)) }}</p>
     </article>
+    {%- endfor -%}
 </div>

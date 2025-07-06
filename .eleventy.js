@@ -19,6 +19,11 @@ module.exports = function(eleventyConfig) {
     return array.slice(0, limit);
   });
 
+  // Add thoughts collection
+  eleventyConfig.addCollection("thoughts", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("thoughts/*.md");
+  });
+
   return {
     dir: {
       input: ".",
