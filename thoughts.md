@@ -9,7 +9,7 @@ description: Essays and reflections on technology, entrepreneurship, and persona
     <article>
         <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
         <time datetime="{{ post.data.date | dateFormat('YYYY-MM-DD') }}" class="post-date">{{ post.data.date | dateFormat('MMMM DD, YYYY') }}</time>
-        <p class="post-description">{{ post.data.description or (post.content | truncate(150)) }}</p>
+        <p class="post-description">{{ post.data.description or (post.content | striptags | truncate(150)) }}</p>
     </article>
     {%- endfor -%}
 </div>
