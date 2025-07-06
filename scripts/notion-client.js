@@ -14,7 +14,13 @@ function extractPageIdFromUrl(pageUrl) {
     throw new Error("Failed to extract page ID from URL");
 }
 
-const NOTION_PAGE_ID = extractPageIdFromUrl(process.env.NOTION_PAGE_URL);
+// Extract page ID only when needed to avoid module loading errors
+function getNotionPageId() {
+    if (!process.env.NOTION_PAGE_URL) {
+        throw new Error("NOTION_PAGE_URL environment variable is not set");
+    }
+    return extractPageIdFromUrl(process.env.NOTION_PAGE_URL);
+}
 
 /**
  * Lists all child databases contained within NOTION_PAGE_ID
@@ -28,7 +34,7 @@ async function getNotionDatabases() {
 
         while (hasMore) {
             const response = await notion.blocks.children.list({
-                block_id: NOTION_PAGE_ID,
+                block_id: getNotionPageId(),
                 start_cursor: startCursor,
             });
 

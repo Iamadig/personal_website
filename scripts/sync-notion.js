@@ -161,11 +161,30 @@ async function syncQuotes() {
 async function sync() {
     console.log("Starting Notion sync...\n");
     
-    await syncThoughts();
-    console.log("");
-    await syncQuotes();
+    // Check if environment variables are set
+    if (!process.env.NOTION_INTEGRATION_SECRET) {
+        console.log("❌ NOTION_INTEGRATION_SECRET environment variable not set");
+        return;
+    }
     
-    console.log("\nNotion sync completed!");
+    if (!process.env.NOTION_PAGE_URL) {
+        console.log("❌ NOTION_PAGE_URL environment variable not set");
+        return;
+    }
+    
+    console.log("✅ Environment variables are set");
+    console.log("✅ Starting content sync...\n");
+    
+    try {
+        await syncThoughts();
+        console.log("");
+        await syncQuotes();
+        
+        console.log("\n✅ Notion sync completed successfully!");
+    } catch (error) {
+        console.error("❌ Notion sync failed:", error.message);
+        throw error;
+    }
 }
 
 // Run sync if called directly
