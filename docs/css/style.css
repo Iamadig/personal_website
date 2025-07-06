@@ -242,95 +242,78 @@ a:hover {
     color: var(--hover-color);
 }
 
-/* Beautiful Thoughts Grid */
-.thoughts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+/* Minimalist Thoughts List */
+.thoughts-list {
+    max-width: 800px;
+    margin: 2rem auto 0;
 }
 
-.thought-card {
-    background: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 0;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.thought-item {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.thought-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: var(--hover-color);
+.thought-item:last-child {
+    border-bottom: none;
 }
 
-.card-content {
-    padding: 1.5rem;
-}
-
-.card-date {
-    font-size: 0.875rem;
-    color: var(--hover-color);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.75rem;
+.thought-link {
     display: block;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
-
-.card-title a {
-    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: inherit;
+    transition: all 0.2s ease;
 }
 
-.card-title a:hover {
-    color: var(--hover-color);
+.thought-link:hover {
+    opacity: 0.8;
 }
 
-.card-description {
+.thought-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.thought-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.thought-date {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+}
+
+.thought-description {
     color: var(--text-color);
     opacity: 0.8;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
-.card-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: auto;
-}
-
-.read-more {
-    color: var(--hover-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0;
-}
-
-.read-more:hover {
-    color: var(--text-color);
-    transform: translateX(4px);
-}
-
-@media (max-width: 768px) {
-    .thoughts-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+@media (max-width: 600px) {
+    .thought-header {
+        flex-direction: column;
+        gap: 0.25rem;
     }
     
-    .thought-card {
-        margin: 0;
+    .thought-date {
+        align-self: flex-start;
+    }
+    
+    .thought-item {
+        margin-bottom: 2.5rem;
     }
 }
 
