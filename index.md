@@ -12,4 +12,6 @@ I am a curious person and I find pleasure in figuring out patterns in chaos. My 
 
 "I have no special talent. I am only passionately curious." - Albert Einstein
 
-In the past, I've led launch of DiDi in ANZ, scaled it to be the second largest rideshare company in the region. I have led commercial integration for one of the biggest CPG M&A deals in the world & founded one of the leading AI companies in data analytics for Greenfield exploration in mining. 
+In the past, I've led launch of DiDi in ANZ, scaled it to be the second largest rideshare company in the region. I have led commercial integration for one of the biggest CPG M&A deals in the world & founded one of the leading AI companies in data analytics for Greenfield exploration in mining.
+
+*Last updated: July 6, 2025* 
