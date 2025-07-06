@@ -1,8 +1,11 @@
-name: Deploy to GitHub Pages
+name: Manual Deploy (Code Changes Only)
 
 on:
   push:
     branches: [ main ]
+    paths-ignore: 
+      - 'thoughts/**'
+      - '_data/quotes.json'
   workflow_dispatch:
 
 permissions:

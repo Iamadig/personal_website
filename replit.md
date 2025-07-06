@@ -93,6 +93,11 @@ Changelog:
   - Updated quotes page to use dynamic data from Notion
   - Added support for rich text formatting in blog posts
   - Implemented slug generation and frontmatter handling
+- July 06, 2025. Migrated from Replit Agent to Replit environment
+  - Fixed Eleventy server configuration for proper port binding
+  - Merged GitHub Actions workflows for streamlined deployment
+  - Single workflow now handles Notion sync + deployment in one process
+  - Optimized for seamless content updates from Notion to live website
 ```
 
 ## User Preferences

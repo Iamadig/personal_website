@@ -1,4 +1,4 @@
-name: Sync Notion Content
+name: Sync Notion Content and Deploy
 
 on:
   schedule:
@@ -10,9 +10,21 @@ on:
     branches: [ main ]
     paths: [ 'scripts/sync-notion.js' ]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  sync-notion:
+  sync-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
     - name: Checkout repository
@@ -23,7 +35,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
         
     - name: Install dependencies
@@ -35,16 +47,31 @@ jobs:
         NOTION_PAGE_URL: ${{ secrets.NOTION_PAGE_URL }}
       run: node scripts/sync-notion.js
       
-    - name: Check for changes
+    - name: Check for content changes
       id: changes
       run: |
         git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
         
-    - name: Commit and push changes
+    - name: Commit content changes
       if: steps.changes.outputs.changed == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Auto-sync content from Notion [skip ci]"
-        git push
+        git commit -m "Auto-sync content from Notion"
+        
+    - name: Build site
+      run: npx @11ty/eleventy
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./docs
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      
+    - name: Push content changes to repository
+      if: steps.changes.outputs.changed == 'true'
+      run: git push
