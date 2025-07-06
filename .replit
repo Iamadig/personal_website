@@ -1,4 +1,4 @@
-modules = ["nodejs-20"]
+modules = ["nodejs-20", "web"]
 
 [nix]
 channel = "stable-24_05"
@@ -23,11 +23,8 @@ author = "agent"
 agentRequireRestartOnSave = false
 
 [[workflows.workflow.tasks]]
-task = "packager.installForAll"
-
-[[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx @11ty/eleventy --serve --port 3000"
+args = "npx @11ty/eleventy --serve --port=3000"
 waitForPort = 3000
 
 [deployment]

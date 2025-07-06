@@ -1,0 +1,77 @@
+<h1>Notion CMS Integration</h1>
+<p>This directory contains scripts for syncing content from Notion to your static website.</p>
+<h2>Files</h2>
+<ul>
+<li><code>notion-client.js</code> - Core Notion API client and utilities</li>
+<li><code>sync-notion.js</code> - Main sync script that pulls content from Notion</li>
+<li><code>inspect-databases.js</code> - Utility to inspect your Notion database structure</li>
+</ul>
+<h2>How It Works</h2>
+<h3>Databases Structure</h3>
+<p><strong>Thoughts Database:</strong></p>
+<ul>
+<li>Title (title) - Blog post title</li>
+<li>Published (checkbox) - Controls visibility on website</li>
+<li>Date (date) - Publication date</li>
+<li>Slug (rich_text) - URL-friendly version (optional, auto-generated from title)</li>
+<li>Tags (multi_select) - Categories for organizing posts</li>
+<li>Description (rich_text) - Brief summary for meta tags</li>
+<li><strong>Page Body</strong> - Write your full blog post content directly in the page (below properties)</li>
+</ul>
+<p><strong>Quotes Database:</strong></p>
+<ul>
+<li>Quote (title) - The actual quote text</li>
+<li>Author (rich_text) - Who said it</li>
+<li>Source (rich_text) - Book, speech, etc. (optional)</li>
+<li>Date (date) - When you added it</li>
+<li>Published (checkbox) - Controls visibility on website</li>
+</ul>
+<h3>Sync Process</h3>
+<ol>
+<li><strong>Thoughts</strong>: Creates individual markdown files in <code>thoughts/</code> folder with proper frontmatter</li>
+<li><strong>Quotes</strong>: Creates a JSON data file at <code>_data/quotes.json</code> that the quotes page uses</li>
+</ol>
+<h2>Usage</h2>
+<h3>Manual Sync</h3>
+<pre><code class="language-bash">node scripts/sync-notion.js
+</code></pre>
+<h3>Automatic Sync</h3>
+<ul>
+<li>GitHub Actions runs daily at 9 AM UTC</li>
+<li>Can be triggered manually from GitHub Actions tab</li>
+<li>Runs when sync script is updated</li>
+</ul>
+<h2>Setting Up New Content</h2>
+<h3>Adding a New Blog Post</h3>
+<ol>
+<li>Open your Notion &quot;Thoughts&quot; database</li>
+<li>Click &quot;New&quot; to create a new page</li>
+<li>Set the title, date, description, and tags in the properties</li>
+<li>Write your blog post content directly in the page body (below the properties)</li>
+<li>Check the &quot;Published&quot; checkbox when ready to publish</li>
+<li>Wait for next sync or trigger manually</li>
+</ol>
+<h3>Adding a New Quote</h3>
+<ol>
+<li>Open your Notion &quot;Quotes&quot; database</li>
+<li>Add the quote text in the &quot;Quote&quot; field</li>
+<li>Fill in the author and source (optional)</li>
+<li>Check the &quot;Published&quot; checkbox</li>
+<li>Wait for next sync or trigger manually</li>
+</ol>
+<h2>Troubleshooting</h2>
+<p>If sync fails:</p>
+<ol>
+<li>Check that your Notion integration has access to the page</li>
+<li>Verify that NOTION_INTEGRATION_SECRET and NOTION_PAGE_URL are set correctly</li>
+<li>Make sure the &quot;Published&quot; checkbox is checked for content you want to sync</li>
+<li>Check the GitHub Actions logs for detailed error messages</li>
+</ol>
+<h2>Content Guidelines</h2>
+<ul>
+<li>Use Notion's rich text formatting (bold, italic, code, etc.)</li>
+<li>For thoughts: Content can include headings, lists, quotes, and code blocks</li>
+<li>For quotes: Keep quotes concise and meaningful</li>
+<li>Always fill in required fields (Title, Quote, Author)</li>
+<li>Use the Published checkbox to control what appears on your website</li>
+</ul>

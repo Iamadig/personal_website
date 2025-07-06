@@ -1,0 +1,101 @@
+<h1>Adi's Personal Website</h1>
+<h2>Overview</h2>
+<p>This is a personal website built with Eleventy (11ty), a static site generator. The site serves as a personal blog and portfolio where Adi shares thoughts on entrepreneurship, startup ecosystems, and business insights. The site features a minimalist design with a focus on content readability and clean typography.</p>
+<h2>System Architecture</h2>
+<h3>Static Site Generation</h3>
+<ul>
+<li><strong>Technology</strong>: Eleventy (11ty) v3.0.0</li>
+<li><strong>Build Process</strong>: Markdown files are processed through Nunjucks templates to generate static HTML</li>
+<li><strong>Output Directory</strong>: <code>docs/</code> (configured for GitHub Pages compatibility)</li>
+<li><strong>Template Engine</strong>: Nunjucks for HTML, Markdown, and data processing</li>
+</ul>
+<h3>Content Management System</h3>
+<ul>
+<li><strong>Primary CMS</strong>: Notion integration for content creation and management</li>
+<li><strong>Content Sync</strong>: Automated GitHub Actions workflow syncs content from Notion to static files</li>
+<li><strong>Blog Posts</strong>: Notion &quot;Thoughts&quot; database → Individual markdown files in <code>thoughts/</code> directory</li>
+<li><strong>Quotes</strong>: Notion &quot;Quotes&quot; database → JSON data file at <code>_data/quotes.json</code></li>
+<li><strong>Fallback</strong>: Manual markdown file editing still supported</li>
+<li><strong>Assets</strong>: CSS and other static files copied to output directory</li>
+</ul>
+<h2>Key Components</h2>
+<h3>Frontend Architecture</h3>
+<ul>
+<li><strong>Styling</strong>: Custom CSS with CSS variables for theming</li>
+<li><strong>Typography</strong>: Roboto font family from Google Fonts</li>
+<li><strong>Theme System</strong>: Light/dark mode toggle functionality</li>
+<li><strong>Responsive Design</strong>: Mobile-first approach with flexible layouts</li>
+</ul>
+<h3>Content Types</h3>
+<ol>
+<li><strong>Home Page</strong>: Personal introduction and bio</li>
+<li><strong>Thoughts</strong>: Blog posts about entrepreneurship and business insights</li>
+<li><strong>Quotes</strong>: Curated collection of meaningful quotes</li>
+<li><strong>Resources</strong>: Planned section for useful links and resources (currently WIP)</li>
+</ol>
+<h3>Template System</h3>
+<ul>
+<li><strong>Base Template</strong>: <code>base.njk</code> for common layout elements</li>
+<li><strong>Blog Template</strong>: <code>blog-post.njk</code> for individual blog posts</li>
+<li><strong>Navigation</strong>: Consistent navigation across all pages</li>
+<li><strong>Date Formatting</strong>: Custom filter for date display</li>
+</ul>
+<h2>Data Flow</h2>
+<ol>
+<li><strong>Content Creation</strong>: Markdown files with frontmatter metadata</li>
+<li><strong>Template Processing</strong>: Eleventy processes MD files through Nunjucks templates</li>
+<li><strong>Static Generation</strong>: HTML files generated in <code>docs/</code> directory</li>
+<li><strong>Asset Copying</strong>: CSS and other static assets copied to output</li>
+<li><strong>Deployment</strong>: Static files can be served from any web server</li>
+</ol>
+<h2>External Dependencies</h2>
+<h3>Build Dependencies</h3>
+<ul>
+<li><strong>@11ty/eleventy</strong>: Core static site generator</li>
+<li><strong>@notionhq/client</strong>: Official Notion API client for content sync</li>
+<li><strong>Node.js</strong>: Runtime environment for build process</li>
+</ul>
+<h3>Content Management Dependencies</h3>
+<ul>
+<li><strong>Notion API</strong>: Content management and storage</li>
+<li><strong>GitHub Actions</strong>: Automated content synchronization</li>
+<li><strong>Notion Integration</strong>: Custom integration for API access</li>
+</ul>
+<h3>Frontend Dependencies</h3>
+<ul>
+<li><strong>Google Fonts</strong>: Roboto font family</li>
+<li><strong>Custom CSS</strong>: No external CSS frameworks</li>
+</ul>
+<h3>Content Dependencies</h3>
+<ul>
+<li><strong>Markdown</strong>: Content authoring format (generated from Notion)</li>
+<li><strong>Frontmatter</strong>: YAML metadata for posts and pages</li>
+<li><strong>JSON Data</strong>: Structured data for quotes and other content</li>
+</ul>
+<h2>Deployment Strategy</h2>
+<h3>Static Hosting</h3>
+<ul>
+<li><strong>Output Directory</strong>: <code>docs/</code> configured for GitHub Pages</li>
+<li><strong>Build Process</strong>: Local development with <code>eleventy --serve</code></li>
+<li><strong>Production</strong>: Static files can be deployed to any static hosting service</li>
+</ul>
+<h3>Development Workflow</h3>
+<ol>
+<li>Edit Markdown content files</li>
+<li>Run Eleventy build process</li>
+<li>Preview changes locally</li>
+<li>Deploy static files to hosting service</li>
+</ol>
+<h2>Changelog</h2>
+<pre><code>Changelog:
+- July 05, 2025. Initial setup
+- July 05, 2025. Added Notion CMS integration with automated content sync
+  - Created Notion API client and sync scripts
+  - Set up GitHub Actions workflow for daily automated syncing
+  - Updated quotes page to use dynamic data from Notion
+  - Added support for rich text formatting in blog posts
+  - Implemented slug generation and frontmatter handling
+</code></pre>
+<h2>User Preferences</h2>
+<pre><code>Preferred communication style: Simple, everyday language.
+</code></pre>
