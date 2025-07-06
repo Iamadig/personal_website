@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
-  // Copy CSS directory to output
+  // Copy CSS and JS directories to output
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
 
   // Add date filter for blog posts and footer
   eleventyConfig.addFilter("dateFormat", function(date) {
